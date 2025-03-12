@@ -1,0 +1,53 @@
+.payment-container {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.payment-container-item {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+.payment-form-input {
+    border: solid;
+    width: 100%;
+    border-radius: 5px;
+    height: 45px;
+}
+
+.payment-form-input-card {
+    border: solid;
+    width: 120px;
+    border-radius: 5px;
+    height: 45px;
+    gap: 100px
+}
+
+.date-cvv {
+    display: flex;
+    flex-direction: row;
+    display: flex;
+    flex-direction: row;
+}
+
+.payment-form-label {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-disabled {
+    fill: #d9ded3;
+    color: gray;
+    border-color: gray;
+    background-color: white;
+    border: 1px solid;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    transition: 0.3s;
+    align-items: center;
+    justify-content: center;
+}
