@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/codecraftacademymd/static/css/main.9773319b.css",
+    "main.js": "/codecraftacademymd/static/js/main.e16e21c4.js",
+    "index.html": "/codecraftacademymd/index.html",
+    "main.9773319b.css.map": "/codecraftacademymd/static/css/main.9773319b.css.map",
+    "main.e16e21c4.js.map": "/codecraftacademymd/static/js/main.e16e21c4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9773319b.css",
+    "static/js/main.e16e21c4.js"
+  ]
+}
