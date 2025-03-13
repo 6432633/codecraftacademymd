@@ -34,11 +34,11 @@ const Features2 = (props) => {
             <div className="features2-content2">
               <h2 className="thq-heading-2">{t.features2.proHighlights}</h2>
               <span className="thq-body-small">
-                {t.pricing.features.accessLessons}<br/>
-                {t.pricing.features.liveSession}<br/>
-                {t.pricing.features.mockInterviews}<br/>
-                {t.pricing.features.cvAssistance}<br/>
-                {t.pricing.features.individualPlan}
+                1. {t.pricing.features.accessLessons}<br/>
+                2. {t.pricing.features.liveSession}<br/>
+                3. {t.pricing.features.mockInterviews}<br/>
+                4. {t.pricing.features.cvAssistance}<br/>
+                5. {t.pricing.features.individualPlan}
               </span>
             </div>
           </div>
@@ -52,10 +52,7 @@ const Features2 = (props) => {
             <div className="features2-content3">
               <h2 className="thq-heading-2">{t.features2.standardHighlights}</h2>
               <span className="thq-body-small">
-                {t.pricing.features.accessLessons}<br/>
-                {t.pricing.features.practicalExercises}<br/>
-                {t.pricing.features.materials}<br/>
-                {t.pricing.features.practice}
+                {t.features2.duration}<br/>
               </span>
             </div>
           </div>
@@ -64,7 +61,7 @@ const Features2 = (props) => {
           {activeTab === 0 && (
             <img
               alt={props.feature1ImgAlt}
-              src="/other-images/programmer-1653351_1920.png"
+              src="/slider-asstes/laptop-2620118_1920.jpg"
               className="features2-image1 thq-img-ratio-16-9"
             />
           )}

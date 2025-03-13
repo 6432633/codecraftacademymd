@@ -8,7 +8,7 @@ const Navbar = (props) => {
   return (
     <header className="navbar-container">
       <header data-thq="thq-navbar" className="navbar-navbar-interactive">
-        <a href='/'><img
+        <a href='/#/'><img
           alt={props.logoAlt}
           src={props.logoSrc}
           className="navbar-image1"

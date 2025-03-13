@@ -27,12 +27,9 @@ const Payment = (props) => {
 
     const getCourseDetails = () => {
         const courses = [
-            { id: 1, name: 'Manual Testing Standard', price: 50 },
-            { id: 2, name: 'Software Testing(Java)', price: 50 },
-            { id: 3, name: 'Software Testing(Cypress)', price: 50 },
-            { id: 4, name: 'Manual Testing Pro', price: 499 },
-            { id: 5, name: 'Manual Testing Pro', price: 999 },
-            { id: 6, name: 'Software Testing(Cypress) Pro', price: 999 }
+            { id: 7, name: t.courses.manualTestingStandard, price: 5000 },
+            { id: 8, name: t.courses.softwareTestingJava, price: 15000 },
+            { id: 9, name: t.courses.softwareTestingCypress, price: 15000 }
         ];
 
         const course = courses.find(c => c.id === parseInt(courseId));
@@ -88,8 +85,8 @@ const Payment = (props) => {
         getCourseDetails();
     }, [courseId]);
     useLayoutEffect(() => {
-        window.scroll(0, 0)
-    })
+        window.scrollTo(0, 0)
+    }, [])
 
     return (
         <div>

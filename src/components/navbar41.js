@@ -108,7 +108,7 @@ const Navbar41 = (props) => {
 Navbar41.defaultProps = {
   link1: "Home",
   link2Url: '#/courses',
-  link1Url: '/',
+  link1Url: '#/',
   link2: 'Courses',
   link3Url: '#/pricing',
   logoSrc:

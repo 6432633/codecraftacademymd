@@ -1,6 +1,6 @@
 {
   "name": "spotless-hungry-crocodile",
-  "homepage": "https://www.code-craft.academy/#",
+  "homepage": "https://bankeer.github.io/#/",
   "version": "1.0.0",
   "private": true,
   "proxy": "https://paynet.md",
@@ -16,7 +16,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -r https://github.com/6432633/codecraft-academy-new-ui.git",
+    "deploy": "gh-pages -d build -r https://github.com/bankeer/codecraftacademymd.git",
     "start": "craco start",
     "build": "craco build",
     "test": "craco test --env=jsdom",

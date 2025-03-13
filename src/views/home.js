@@ -20,7 +20,7 @@ const Home = (props) => {
   return (
     <div className="home-container">
       <Helmet>
-        <title>Code-Craft Academy</title>
+        <title>Codecraft Academy</title>
       </Helmet>
       <Navbar41
         link1={

@@ -1,142 +1,137 @@
-import React, { Fragment, useLayoutEffect, useState } from "react";
-import Navbar41 from "../components/navbar41";
-import Footer from "../components/footer";
-import { useNavigate } from "react-router-dom";
+import React, { Fragment, useLayoutEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useLanguage } from '../context/LanguageContext'
+import Navbar41 from '../components/navbar41'
+import Footer from '../components/footer'
+import { Helmet } from 'react-helmet'
 import './courses.css'
+
 const Courses = () => {
-    const navigate = useNavigate();
-    const [language, setLanguage] = useState('RO')
-    useLayoutEffect(() => {
-        window.scroll(0,0)
-    })
-    return (
-        <div>
-            <Navbar41
-                link1={
-                    <Fragment>
-                        <span className="contact1-text10">Acasa</span>
-                    </Fragment>
-                }
+  const navigate = useNavigate()
+  useLayoutEffect(() => {window.scrollTo(0,0)})
+  const { t } = useLanguage()
+  const [imageError, setImageError] = useState({})
 
-                link2={
-                    <Fragment>
-                        <span className="contact1-text13">Cursuri</span>
-                    </Fragment>
-                }
-                link3={
-                    <Fragment>
-                        <span className="contact1-text15">Preturi</span>
-                    </Fragment>
-                }
-                link4={
-                    <Fragment>
-                        <span className="contact1-text11">Contacte</span>
-                    </Fragment>
-                }
-    
+  const handleImageError = (id) => {
+    setImageError(prev => ({...prev, [id]: true}))
+    console.error(`Failed to load image for course ${id}`)
+  }
 
-            ></Navbar41>
-         
-            <div class="course-container">
-                <div class="course-card">
-                    <img src="/other-images/courses/8058227.jpg" alt="Course Image" class="course-image" />
-                    <div class="course-content">
-                        <h3 class="course-title">Manual Testing Standard</h3>
-                        <p class="course-description">
-                            This course covers the basics of software testing, SQL basics and API testing basics.
-                            Within this course you will learn what is testing, testing levels, testing techniques,
-                            how to write a test case, and how to write a bug report.
-                            No mentorship, CV assistance or Mock Interviews are available on it.
-                            Additionally, to lessons you will receive a set of conspects and practical exercises.
-                        </p>
-                        <p class="course-duration">Duration: 1 month</p>
-                        <p class="course-price">Price: $50</p>
-                        <button className="pricing-button14 thq-button-outline thq-button-animated" onClick={() => navigate('/enroll/1')}>
-                            <span className="thq-body-small">Enroll Now</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="course-card">
-                    <img src="/other-images/courses/20943620.jpg" alt="Advanced Testing" class="course-image" />
-                    <div class="course-content">
-                        <h3 class="course-title">Software Testing(Java)</h3>
-                        <p class="course-description">
-                            This course covers basics of Java programming language, basics of SQL, basics of API testing , and basics of manual testing.
-                            Also, the course covers some aspects of automation testing using Cucumber and Selenium.
-                            No mentorship, CV assistance or Mock Interviews are available on it.
-                            Additionally, to lessons you will receive a set of conspects and practical exercises.
-                        </p>
-                        <p class="course-duration">Duration: 1 month</p>
-                        <p class="course-price">Price: $50</p>
-                        <button className="pricing-button14 thq-button-outline thq-button-animated" onClick={() => navigate('/enroll/2')}>
-                            <span className="thq-body-small">Enroll Now</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="course-card">
-                    <img src="/other-images/courses/20945582.jpg" alt="Advanced Testing" class="course-image" />
-                    <div class="course-content">
-                        <h3 class="course-title">Software Testing(Cypress)</h3>
-                        <p class="course-description">
-                            This course covers basics of TypeScript programming language, basics of SQL, basics of API testing , and basics of manual testing.
-                            Also, the course covers some aspects of automation testing using Cypress.
-                            No mentorship, CV assistance or Mock Interviews are available on it.
-                            Additionally, to lessons you will receive a set of conspects and practical exercises.
-                        </p>
-                        <p class="course-duration">Duration: 1 month</p>
-                        <p class="course-price">Price: $50</p>
-                        <button className="pricing-button14 thq-button-outline thq-button-animated" onClick={() => navigate('/enroll/3')}>
-                            <span className="thq-body-small">Enroll Now</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="course-container">
-                <div class="course-card">
-                    <img src="/other-images/courses/3463986.jpg" alt="Course Image" class="course-image" />
-                    <div class="course-content">
-                        <h3 class="course-title">Manual Testing Pro</h3>
-                        <p class="course-description">
-                        This course provides comprehensive training in software testing, covering both fundamental and advanced concepts. It includes in-depth knowledge of manual testing, SQL, and API testing, along with hands-on experience in testing techniques. The program features live mentor-led sessions, interview preparation, and CV assistance to ensure career readiness.
-                        </p>
-                        <p class="course-duration">Duration: 2 months</p>
-                        <p class="course-price">Price: $499</p>
-                        <button className="pricing-button14 thq-button-outline thq-button-animated" onClick={() => navigate('/enroll/4')}>
-                            <span className="thq-body-small">Enroll Now</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="course-card">
-                    <img src="/other-images/courses/20945836.jpg" alt="Advanced Testing" class="course-image" />
-                    <div class="course-content">
-                        <h3 class="course-title">Software Testing(Java) Pro</h3>
-                        <p class="course-description">
-                        This course provides comprehensive training in software testing, covering both fundamental and advanced concepts of automation testing using Java, and Selenium based framework.Also, covers knowledge in  manual testing and deep understandign of API testing. The program features live mentor-led sessions, interview preparation, and CV assistance to ensure career readiness.
-                        </p>
-                        <p class="course-duration">Duration: 6 months</p>
-                        <p class="course-price">Price: $999</p>
-                        <button className="pricing-button14 thq-button-outline thq-button-animated" onClick={() => navigate('/enroll/5')}>
-                            <span className="thq-body-small">Enroll Now</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="course-card">
-                    <img src="/other-images/courses/7903569.jpg" alt="Advanced Testing" class="course-image" />
-                    <div class="course-content">
-                        <h3 class="course-title">Software Testing(Cypress) Pro</h3>
-                        <p class="course-description">
-                        This course provides comprehensive training in software testing, covering both fundamental and advanced concepts of automation testing using Cypress.Also, covers knowledge in  manual testing and deep understandign of API testing. The program features live mentor-led sessions, interview preparation, and CV assistance to ensure career readiness.
-                        </p>
-                        <p class="course-duration">Duration: 6 months</p>
-                        <p class="course-price">Price: $999</p>
-                        <button className="pricing-button14 thq-button-outline thq-button-animated" onClick={() => navigate('/enroll/6')}>
-                            <span className="thq-body-small">Enroll Now</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <Footer></Footer>
+  return (
+    <div>
+      <Helmet>
+        <title>{t.courses.pageTitle}</title>
+        <meta
+          property="og:title"
+          content={t.courses.pageTitle}
+        />
+        <meta
+          property="og:description"
+          content={t.courses.pageDescription}
+        />
+      </Helmet>
+      <Navbar41
+        link1={
+          <Fragment>
+            <span className="contact1-text10">{t.navigation.home}</span>
+          </Fragment>
+        }
+        link2={
+          <Fragment>
+            <span className="contact1-text13">{t.navigation.courses}</span>
+          </Fragment>
+        }
+        link3={
+          <Fragment>
+            <span className="contact1-text15">{t.pricing.title}</span>
+          </Fragment>
+        }
+        link4={
+          <Fragment>
+            <span className="contact1-text11">{t.navigation.contacts}</span>
+          </Fragment>
+        }
+      ></Navbar41>
+
+      <div className="course-container">
+        <div className="course-card">
+          <img 
+            src="/other-images/courses/3463986.jpg" 
+            alt={t.courses.manualTestingPro} 
+            className="course-image"
+            onError={() => handleImageError(1)}
+            style={{ display: imageError[1] ? 'none' : 'block' }}
+          />
+          <div className="course-content">
+            <h3 className="course-title">{t.courses.manualTestingPro}</h3>
+            <p className="course-description">
+              1. {t.courses.manualTestingCourse_1}<br/>
+              2. {t.courses.manualTestingCourse_2}<br/>
+              3. {t.courses.manualTestingCourse_3}<br/>
+              4. {t.courses.manualTestingCourse_4}<br/>
+              5. {t.courses.manualTestingCourse_5}<br/>
+            </p>
+            <p className="course-duration">{t.courses.courseDuration}: {t.courses.timeManual} {t.courses.months}</p>
+            <p className="course-price">{t.courses.priceStartsAt}: {t.courses.manualPrice} {t.courses.currency}</p>
+            <button className="pricing-button14 thq-button-outline thq-button-animated" onClick={() => navigate('/enroll/7')}>
+              <span className="thq-body-small">{t.courses.enrollNow}</span>
+            </button>
+          </div>
         </div>
-    )
+
+        <div className="course-card">
+          <img 
+            src="/other-images/courses/20945836.jpg" 
+            alt={t.courses.softwareTestingJavaPro} 
+            className="course-image"
+            onError={() => handleImageError(2)}
+            style={{ display: imageError[2] ? 'none' : 'block' }}
+          />
+          <div className="course-content">
+            <h3 className="course-title">{t.courses.softwareTestingJavaPro}</h3>
+            <p className="course-description">
+              1. {t.courses.autoJavaTestingCourse_1}<br/>
+              2. {t.courses.autoJavaTestingCourse_2}<br/>
+              3. {t.courses.autoJavaTestingCourse_3}<br/>
+              4. {t.courses.autoJavaTestingCourse_4}<br/>
+              5. {t.courses.autoJavaTestingCourse_5}<br/>
+            </p>
+            <p className="course-duration">{t.courses.courseDuration}: {t.courses.time} {t.courses.months}</p>
+            <p className="course-price">{t.courses.priceStartsAt}: {t.courses.autoPrice} {t.courses.currency}</p>
+            <button className="pricing-button14 thq-button-outline thq-button-animated" onClick={() => navigate('/enroll/8')}>
+              <span className="thq-body-small">{t.courses.enrollNow}</span>
+            </button>
+          </div>
+        </div>
+
+        <div className="course-card">
+          <img 
+            src="/other-images/courses/7903569.jpg" 
+            alt={t.courses.softwareTestingCypressPro} 
+            className="course-image"
+            onError={() => handleImageError(3)}
+            style={{ display: imageError[3] ? 'none' : 'block' }}
+          />
+          <div className="course-content">
+            <h3 className="course-title">{t.courses.softwareTestingCypressPro}</h3>
+            <p className="course-description">
+              1. {t.courses.autoCypressTestingCourse_1}<br/>
+              2. {t.courses.autoCypressTestingCourse_2}<br/>
+              3. {t.courses.autoCypressTestingCourse_3}<br/>
+              4. {t.courses.autoCypressTestingCourse_4}<br/>
+              5. {t.courses.autoCypressTestingCourse_5}<br/>
+            </p>
+            <p className="course-duration">{t.courses.courseDuration}: {t.courses.time} {t.courses.months}</p>
+            <p className="course-price">{t.courses.priceStartsAt}: {t.courses.autoPrice} {t.courses.currency}</p>
+            <button className="pricing-button14 thq-button-outline thq-button-animated" onClick={() => navigate('/enroll/9')}>
+              <span className="thq-body-small">{t.courses.enrollNow}</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <Footer></Footer>
+    </div>
+  )
 }
+
 export default Courses

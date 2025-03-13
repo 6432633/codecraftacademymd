@@ -29,26 +29,14 @@ const Contact2 = (props) => {
            
           </div>
         </div>
-        <img
-          alt={props.imageAlt}
-          src="/other-images/contactus/envelopes-6919301_1920.jpg"
-          className="thq-img-ratio-16-9"
-        />
+
         <div className="contact2-row">
           <div className="contact2-content2">
             <img src='/other-images/logo/icons8-email.gif'/>
             <div className="contact2-contact-info1">
               <div className="contact2-content3">
                 <h3 className="contact2-text13 thq-heading-3">Email</h3>
-                <p className="contact2-text14 thq-body-large">
-                  {props.content3 ?? (
-                    <Fragment>
-                      <span className="contact2-text23">
-                        We are available non stop
-                      </span>
-                    </Fragment>
-                  )}
-                </p>
+
               </div>
               <span className="contact2-email thq-body-small">
                 {props.email1 ?? (
@@ -66,15 +54,7 @@ const Contact2 = (props) => {
             <div className="contact2-contact-info2">
               <div className="contact2-content5">
                 <h3 className="contact2-text15 thq-heading-3">WhatsApp</h3>
-                <p className="contact2-text16 thq-body-large">
-                  {props.content4 ?? (
-                    <Fragment>
-                      <span className="contact2-text19">
-                      We look forward to hearing from you on WhatsApp!
-                      </span>
-                    </Fragment>
-                  )}
-                </p>
+
               </div>
               <span className="contact2-phone thq-body-small">
                 {props.phone1 ?? (
@@ -86,30 +66,17 @@ const Contact2 = (props) => {
             </div>
           </div>
           <div className="contact2-content6">
-           <img src='/other-images/logo/icons8-skype.gif'></img>
+           <img src='/other-images/logo/icons8-telegram.gif'></img>
             <div className="contact2-contact-info3">
               <div className="contact2-content7">
-                <h3 className="contact2-text17 thq-heading-3">Skype</h3>
-                <p className="contact2-text18 thq-body-large">
-                  {props.content5 ?? (
-                    <Fragment>
-                      <span className="contact2-text26">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Suspendisse varius enim in ero.
-                      </span>
-                    </Fragment>
-                  )}
-                </p>
+                <div className="contact-contact-info3">
+              <div className="contact-content7">
+                <h3 className="contact-text8 thq-heading-3">Telegram</h3>
               </div>
-              <span className="contact2-address thq-body-small">
-                {props.address1 ?? (
-                  <Fragment>
-                    <span className="contact2-text29">
-                      123 Software Testing Street, Online Academy City, 54321
-                    </span>
-                  </Fragment>
-                )}
-              </span>
+              <a style={{marginTop:"1px"}}href="https://t.me/codecraftacademymoldova">Start chat</a>
+            </div>
+                
+              </div>
             </div>
           </div>
         </div>

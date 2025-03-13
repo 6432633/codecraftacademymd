@@ -16,7 +16,7 @@ const Footer = (props) => {
               src="/other-images/logo/new-logo.png"
               className="footer-image1"
             />
-            <span className="thq-body-small">
+            <span className="thq-body-small"> 
                 {t.footer.content1}
             </span>
             <div className="footer-actions">
@@ -179,7 +179,7 @@ Footer.defaultProps = {
   content2: '©2025 Codecraft Academy. All Rights Reserved.',
   link9: 'Privacy Policy',
   link6: 'Blog',
-  logoAlt: 'Software Testing Academy Logo',
+  logoAlt: 'Codecraft Academy',
   link1: 'Home',
   privacyLink: '/privacy-policy',
   link10: 'Sitemap',

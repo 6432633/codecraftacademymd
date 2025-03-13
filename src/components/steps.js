@@ -21,7 +21,7 @@ const Steps = (props) => {
             {t.steps.description}
             </p>
             <div className="steps-actions">
-              <button className="thq-button-animated thq-button-filled steps-button" onClick={() => navigate('/pricing')}>
+              <button className="thq-button-animated thq-button-filled steps-button" onClick={() => navigate('/courses')}>
                   <span className="thq-body-small" >{t.steps.buttonText}</span>
               </button>
             </div>
@@ -32,28 +32,24 @@ const Steps = (props) => {
               <span className="steps-text14 thq-body-small">
                 {t.steps.step1Description}
               </span>
-              <label className="steps-text15 thq-heading-3">1</label>
             </div>
             <div className="steps-container5 thq-card">
               <h2 className="thq-heading-2">{t.steps.step2Title}</h2>
               <span className="steps-text17 thq-body-small">
                 {t.steps.step2Description}
               </span>
-              <label className="steps-text18 thq-heading-3">2</label>
             </div>
             <div className="steps-container6 thq-card">
               <h2 className="thq-heading-2">{t.steps.step3Title}</h2>
               <span className="steps-text20 thq-body-small">
                 {t.steps.step3Description}
               </span>
-              <label className="steps-text21 thq-heading-3">3</label>
             </div>
             <div className="steps-container7 thq-card">
               <h2 className="thq-heading-2">{t.steps.step4Title}</h2>
               <span className="steps-text23 thq-body-small">
                 {t.steps.step4Description}
               </span>
-              <label className="steps-text24 thq-heading-3">4</label>
             </div>
           </div>
         </div>

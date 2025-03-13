@@ -23,7 +23,6 @@ const Contact = (props) => {
             <div className="contact-contact-info1">
               <div className="contact-content3">
                 <h3 className="contact-text4 thq-heading-3">Email</h3>
-                <p className="contact-text5 thq-body-large">{t.contact.content3}</p>
               </div>
               <span className="contact-email thq-body-small">
               <a href="mailto:support@code-craft.academy">support@code-craft.academy</a>
@@ -35,19 +34,17 @@ const Contact = (props) => {
             <div className="contact-contact-info2">
               <div className="contact-content5">
                 <h3 className="contact-text6 thq-heading-3">WhatsApp</h3>
-                <p className="contact-text7 thq-body-large">{t.contact.content4}</p>
               </div>
               <a aria-label="Chat on WhatsApp" href="https://wa.me/37369207444">+373 69 207 444</a >
             </div>
           </div>
           <div className="contact-content6">
-            <img src='/other-images/logo/icons8-skype.gif'/>
+            <img src='/other-images/logo/icons8-telegram.gif'/>
             <div className="contact-contact-info3">
               <div className="contact-content7">
-                <h3 className="contact-text8 thq-heading-3">Skype</h3>
-                <p className="contact-text9 thq-body-large">{t.contact.content5}</p>
+                <h3 className="contact-text8 thq-heading-3">Telegram</h3>
               </div>
-              <a style={{marginTop:"22px"}}href="skype:support@code-craft.academy?chat">Start chat</a>
+              <a style={{marginTop:"1px"}}href="https://t.me/codecraftacademymoldova">Start chat</a>
             </div>
           </div>
         </div>

@@ -167,7 +167,7 @@ const Hero = (props) => {
     to {
       transform: translateX(calc(-100% - 16px));
     }
-  }
+  }jpg
 
   @keyframes scroll-y {
     from {
