@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/codecraftacademymd/static/css/main.d99ff262.css",
-    "main.js": "/codecraftacademymd/static/js/main.5a4be386.js",
+    "main.js": "/codecraftacademymd/static/js/main.64b239d3.js",
     "index.html": "/codecraftacademymd/index.html",
     "main.d99ff262.css.map": "/codecraftacademymd/static/css/main.d99ff262.css.map",
-    "main.5a4be386.js.map": "/codecraftacademymd/static/js/main.5a4be386.js.map"
+    "main.64b239d3.js.map": "/codecraftacademymd/static/js/main.64b239d3.js.map"
   },
   "entrypoints": [
     "static/css/main.d99ff262.css",
-    "static/js/main.5a4be386.js"
+    "static/js/main.64b239d3.js"
   ]
 }
