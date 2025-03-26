@@ -1,6 +1,6 @@
 {
   "name": "spotless-hungry-crocodile",
-  "homepage": "https://bankeer.github.io/#/",
+  "homepage": "/",
   "version": "1.0.0",
   "private": true,
   "proxy": "https://paynet.md",
@@ -16,7 +16,6 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -r https://github.com/bankeer/codecraftacademymd.git",
     "start": "craco start",
     "build": "craco build",
     "test": "craco test --env=jsdom",
