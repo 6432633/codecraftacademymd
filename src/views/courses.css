@@ -49,6 +49,16 @@
     margin-bottom: 15px;
 }
 
+.course-description span {
+    display: block;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.course-description span:last-child {
+    margin-bottom: 0;
+}
+
 .course-duration, .course-price {
     font-size: 0.9em;
     color: #444;

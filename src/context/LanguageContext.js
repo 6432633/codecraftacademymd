@@ -1,28 +1,37 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { translations } from '../translations';
 
 const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState('RO');
+    const [currentLanguage, setCurrentLanguage] = useState(() => {
+        // Try to get the language from localStorage, default to 'RO' if not found
+        const savedLanguage = localStorage.getItem('selectedLanguage');
+        return savedLanguage || 'RO';
+    });
 
-  const value = {
-    language,
-    setLanguage,
-    t: translations[language]
-  };
+    // Update localStorage whenever the language changes
+    useEffect(() => {
+        localStorage.setItem('selectedLanguage', currentLanguage);
+    }, [currentLanguage]);
 
-  return (
-    <LanguageContext.Provider value={value}>
-      {children}
-    </LanguageContext.Provider>
-  );
+    const toggleLanguage = () => {
+        setCurrentLanguage(prev => prev === 'RO' ? 'RU' : 'RO');
+    };
+
+    const t = translations[currentLanguage];
+
+    return (
+        <LanguageContext.Provider value={{ currentLanguage, toggleLanguage, t }}>
+            {children}
+        </LanguageContext.Provider>
+    );
 };
 
 export const useLanguage = () => {
-  const context = useContext(LanguageContext);
-  if (context === undefined) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
-  }
-  return context;
+    const context = useContext(LanguageContext);
+    if (!context) {
+        throw new Error('useLanguage must be used within a LanguageProvider');
+    }
+    return context;
 }; 

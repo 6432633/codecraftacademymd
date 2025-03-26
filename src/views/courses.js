@@ -62,14 +62,14 @@ const Courses = () => {
             onError={() => handleImageError(1)}
             style={{ display: imageError[1] ? 'none' : 'block' }}
           />
-          <div className="course-content">
+          <div className="course-content" style={{ width: '100%', maxWidth: '600px', margin: '0 auto' }}>
             <h3 className="course-title">{t.courses.manualTestingPro}</h3>
             <p className="course-description">
-              1. {t.courses.manualTestingCourse_1}<br/>
-              2. {t.courses.manualTestingCourse_2}<br/>
-              3. {t.courses.manualTestingCourse_3}<br/>
-              4. {t.courses.manualTestingCourse_4}<br/>
-              5. {t.courses.manualTestingCourse_5}<br/>
+              <span>1. {t.courses.manualTestingCourse_1}</span>
+              <span>2. {t.courses.manualTestingCourse_2}</span>
+              <span>3. {t.courses.manualTestingCourse_3}</span>
+              <span>4. {t.courses.manualTestingCourse_4}</span>
+              <span>5. {t.courses.manualTestingCourse_5}</span>
             </p>
             <p className="course-duration">{t.courses.courseDuration}: {t.courses.timeManual} {t.courses.months}</p>
             <p className="course-price">{t.courses.priceStartsAt}: {t.courses.manualPrice} {t.courses.currency}</p>
@@ -87,14 +87,14 @@ const Courses = () => {
             onError={() => handleImageError(2)}
             style={{ display: imageError[2] ? 'none' : 'block' }}
           />
-          <div className="course-content">
+          <div className="course-content" style={{ width: '100%', maxWidth: '600px', margin: '0 auto' }}>
             <h3 className="course-title">{t.courses.softwareTestingJavaPro}</h3>
             <p className="course-description">
-              1. {t.courses.autoJavaTestingCourse_1}<br/>
-              2. {t.courses.autoJavaTestingCourse_2}<br/>
-              3. {t.courses.autoJavaTestingCourse_3}<br/>
-              4. {t.courses.autoJavaTestingCourse_4}<br/>
-              5. {t.courses.autoJavaTestingCourse_5}<br/>
+              <span>1. {t.courses.autoJavaTestingCourse_1}</span>
+              <span>2. {t.courses.autoJavaTestingCourse_2}</span>
+              <span>3. {t.courses.autoJavaTestingCourse_3}</span>
+              <span>4. {t.courses.autoJavaTestingCourse_4}</span>
+              <span>5. {t.courses.autoJavaTestingCourse_5}</span>
             </p>
             <p className="course-duration">{t.courses.courseDuration}: {t.courses.time} {t.courses.months}</p>
             <p className="course-price">{t.courses.priceStartsAt}: {t.courses.autoPrice} {t.courses.currency}</p>
@@ -112,14 +112,14 @@ const Courses = () => {
             onError={() => handleImageError(3)}
             style={{ display: imageError[3] ? 'none' : 'block' }}
           />
-          <div className="course-content">
+          <div className="course-content" style={{ width: '100%', maxWidth: '600px', margin: '0 auto' }}>
             <h3 className="course-title">{t.courses.softwareTestingCypressPro}</h3>
             <p className="course-description">
-              1. {t.courses.autoCypressTestingCourse_1}<br/>
-              2. {t.courses.autoCypressTestingCourse_2}<br/>
-              3. {t.courses.autoCypressTestingCourse_3}<br/>
-              4. {t.courses.autoCypressTestingCourse_4}<br/>
-              5. {t.courses.autoCypressTestingCourse_5}<br/>
+              <span>1. {t.courses.autoCypressTestingCourse_1}</span>
+              <span>2. {t.courses.autoCypressTestingCourse_2}</span>
+              <span>3. {t.courses.autoCypressTestingCourse_3}</span>
+              <span>4. {t.courses.autoCypressTestingCourse_4}</span>
+              <span>5. {t.courses.autoCypressTestingCourse_5}</span>
             </p>
             <p className="course-duration">{t.courses.courseDuration}: {t.courses.time} {t.courses.months}</p>
             <p className="course-price">{t.courses.priceStartsAt}: {t.courses.autoPrice} {t.courses.currency}</p>

@@ -6,7 +6,13 @@ import './pricing14.css'
 import '../../src/style.css';
 
 const Navbar41 = (props) => {
-  const { language, setLanguage, t } = useLanguage();
+  const { currentLanguage, toggleLanguage, t } = useLanguage();
+
+  const setLanguage = (lang) => {
+    if (currentLanguage !== lang) {
+      toggleLanguage();
+    }
+  };
 
   return (
     <header className="navbar41-container">
@@ -30,11 +36,12 @@ const Navbar41 = (props) => {
             <a href={props.link4Url} className="thq-link thq-body-small">
               <span className="navbar41-text4">{t.navigation.contacts}</span>
             </a>
+            
             <div className="pricing14-tabs-top">
               <button
                 onClick={() => setLanguage('RO')}
                 className={`pricing14-button10-top thq-button-animated ${
-                  language === 'RO' ? 'thq-button-filled' : 'thq-button-outline'
+                  currentLanguage === 'RO' ? 'thq-button-filled' : 'thq-button-outline'
                 }`}
               >
                 <span className="thq-body-small">RO</span>
@@ -42,7 +49,7 @@ const Navbar41 = (props) => {
               <button
                 onClick={() => setLanguage('RU')}
                 className={`pricing14-button13-top thq-button-animated ${
-                  language === 'RU' ? 'thq-button-filled' : 'thq-button-outline'
+                  currentLanguage === 'RU' ? 'thq-button-filled' : 'thq-button-outline'
                 }`}
               >
                 <span className="thq-body-small">RU</span>
@@ -83,7 +90,7 @@ const Navbar41 = (props) => {
                 <button
                   onClick={() => setLanguage('RO')}
                   className={`pricing14-button10-mobile thq-button-animated ${
-                    language === 'RO' ? 'thq-button-filled' : 'thq-button-outline'
+                    currentLanguage === 'RO' ? 'thq-button-filled' : 'thq-button-outline'
                   }`}
                 >
                   <span className="thq-body-small">RO</span>
@@ -91,7 +98,7 @@ const Navbar41 = (props) => {
                 <button
                   onClick={() => setLanguage('RU')}
                   className={`pricing14-button13-mobile thq-button-animated ${
-                    language === 'RU' ? 'thq-button-filled' : 'thq-button-outline'
+                    currentLanguage === 'RU' ? 'thq-button-filled' : 'thq-button-outline'
                   }`}
                 >
                   <span className="thq-body-small">RU</span>

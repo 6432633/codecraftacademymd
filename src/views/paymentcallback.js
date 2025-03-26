@@ -68,11 +68,11 @@ const PaymentCallback = () => {
     };
 
     const handleGoBack = () => {
-        navigate("/learning");
+        navigate("/courses");
     };
 
     const handleGoPricing = () => {
-        navigate("/pricing");
+        navigate("/courses");
     };
 
     return (

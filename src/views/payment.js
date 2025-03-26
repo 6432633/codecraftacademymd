@@ -5,9 +5,14 @@ import Footer from "../components/footer";
 import '../../src/style.css';
 import { useParams } from "react-router-dom";
 import PaymentProcessor from "../Payment/payment-processor";
+import { useLanguage } from '../context/LanguageContext'
+import LoadingModal from '../components/LoadingModal';
 
 const Payment = (props) => {
+    const { t } = useLanguage()
     const { courseId } = useParams();
+    const [isLoading, setIsLoading] = useState(false);
+    const [errors, setErrors] = useState({});
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -24,6 +29,147 @@ const Payment = (props) => {
     const [key, setKey] = useState('')
     const [urlSuccess, setUrlSuccess] = useState('')
     const [urlFailed, setUrlFailed] = useState('')
+
+    const validateEmail = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+    const validatePhone = (phone) => {
+        const phoneRegex = /^\+?[\d\s-()]{10,}$/;
+        return phoneRegex.test(phone);
+    };
+
+    const validateField = (name, value) => {
+        let errorMessage = '';
+        
+        switch (name) {
+            case 'firstName':
+                if (!value) {
+                    errorMessage = t.payment.validation.firstName.required;
+                } else if (value.length < 2) {
+                    errorMessage = t.payment.validation.firstName.minLength;
+                }
+                break;
+            case 'lastName':
+                if (!value) {
+                    errorMessage = t.payment.validation.lastName.required;
+                } else if (value.length < 2) {
+                    errorMessage = t.payment.validation.lastName.minLength;
+                }
+                break;
+            case 'email':
+                if (!value) {
+                    errorMessage = t.payment.validation.email.required;
+                } else if (!validateEmail(value)) {
+                    errorMessage = t.payment.validation.email.format;
+                }
+                break;
+            case 'country':
+                if (!value) {
+                    errorMessage = t.payment.validation.country.required;
+                } else if (value.length < 2) {
+                    errorMessage = t.payment.validation.country.minLength;
+                }
+                break;
+            case 'city':
+                if (!value) {
+                    errorMessage = t.payment.validation.city.required;
+                } else if (value.length < 2) {
+                    errorMessage = t.payment.validation.city.minLength;
+                }
+                break;
+            case 'address':
+                if (!value) {
+                    errorMessage = t.payment.validation.address.required;
+                } else if (value.length < 5) {
+                    errorMessage = t.payment.validation.address.minLength;
+                }
+                break;
+            case 'phone':
+                if (!value) {
+                    errorMessage = t.payment.validation.phone.required;
+                } else if (!validatePhone(value)) {
+                    errorMessage = t.payment.validation.phone.format;
+                }
+                break;
+        }
+
+        setErrors(prev => {
+            const newErrors = { ...prev };
+            if (errorMessage) {
+                newErrors[name] = errorMessage;
+            } else {
+                delete newErrors[name];
+            }
+            return newErrors;
+        });
+
+        return !errorMessage;
+    };
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+        validateField(name, value);
+    };
+
+    const handleBlur = (e) => {
+        const { name, value } = e.target;
+        validateField(name, value);
+    };
+
+    const handleCheckboxChange = () => {
+        setIsChecked((prevState) => !prevState);
+    };
+
+    const validateForm = () => {
+        let isValid = true;
+        Object.keys(formData).forEach(key => {
+            if (key !== 'course' && key !== 'courseName' && key !== 'price') {
+                if (!validateField(key, formData[key])) {
+                    isValid = false;
+                }
+            }
+        });
+        return isValid;
+    };
+
+    const handlePayment = async () => {
+        if (!isChecked) {
+            alert("Please accept the Terms and Conditions and Privacy Policy.");
+            return;
+        }
+
+        if (!validateForm()) {
+            return;
+        }
+
+        setIsLoading(true);
+        try {
+            const paymentDetails = await PaymentProcessor(formData);
+            setPayment(paymentDetails.id)
+            setDate(paymentDetails.date)
+            setKey(paymentDetails.key)
+            setUrlSuccess(paymentDetails.success)
+            setUrlFailed(paymentDetails.failed)
+            submitForm()
+        } catch (error) {
+            console.error("Payment failed:", error);
+            alert("Payment failed. Please try again.");
+            setIsLoading(false);
+        }
+    };
+
+    const submitForm = () => {
+        const form = document.getElementById("payment-form");
+        if (form) {
+            form.submit();
+        }
+    };
 
     const getCourseDetails = () => {
         const courses = [
@@ -42,95 +188,128 @@ const Payment = (props) => {
         }
     };
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
-    };
-
-    const handleCheckboxChange = () => {
-        setIsChecked((prevState) => !prevState);
-    };
-
-    const handlePayment = async () => {
-        if (!isChecked) {
-            alert("Please accept the Terms and Conditions and Privacy Policy.");
-            return;
-        }
-
-        try {
-            const paymentDetails = await PaymentProcessor(formData);
-            setPayment(paymentDetails.id)
-            setDate(paymentDetails.date)
-            setKey(paymentDetails.key)
-            setUrlSuccess(paymentDetails.success)
-            setUrlFailed(paymentDetails.failed)
-            submitForm()
-        } catch (error) {
-            console.error("Payment failed:", error);
-            alert("Payment failed. Please try again.");
-        }
-    };
-    const submitForm = () => {
-        const form = document.getElementById("payment-form");
-        if (form) {
-            
-            form.submit();
-        }
-    };
-
     useEffect(() => {
         getCourseDetails();
     }, [courseId]);
+
     useLayoutEffect(() => {
         window.scrollTo(0, 0)
     }, [])
+
+    // Update the useEffect for language changes
+    useEffect(() => {
+        // Only update error messages for fields that have errors
+        const fieldsWithErrors = Object.keys(errors);
+        fieldsWithErrors.forEach(field => {
+            validateField(field, formData[field]);
+        });
+    }, [t]); // Only depend on translations
 
     return (
         <div>
             <Navbar41
                 link1={<span className="contact1-text10">Home</span>}
                 link2={<span className="contact1-text13">Courses</span>}
-                link3={<span className="contact1-text15">Pricing</span>}
                 link4={<span className="contact1-text11">Contact Us</span>}
-                link5={<span className="contact1-text11">Learn Now</span>}
             />
+            <LoadingModal isOpen={isLoading} />
             <div className="payment-container">
                 <div className="payment-details">
-                    <h1>Personal Details</h1>
+                    <h1>{t.payment.labels.personalDetails}</h1>
                     <div className="payment-container-item">
-                        <label className="payment-form-label">First Name</label>
-                        <input type="text" className="payment-form-input" placeholder="John" name="firstName" value={formData.firstName} onChange={handleInputChange} />
+                        <label className="payment-form-label">{t.payment.labels.firstName}</label>
+                        <input 
+                            type="text" 
+                            className={`payment-form-input ${errors.firstName ? 'error' : ''}`}
+                            placeholder={t.payment.placeholders.firstName}
+                            name="firstName" 
+                            value={formData.firstName} 
+                            onChange={handleInputChange}
+                            onBlur={handleBlur}
+                        />
+                        {errors.firstName && <span className="error-message">{errors.firstName}</span>}
                     </div>
                     <div className="payment-container-item">
-                        <label className="payment-form-label">Last Name</label>
-                        <input type="text" className="payment-form-input" placeholder="Doe" name="lastName" value={formData.lastName} onChange={handleInputChange} />
+                        <label className="payment-form-label">{t.payment.labels.lastName}</label>
+                        <input 
+                            type="text" 
+                            className={`payment-form-input ${errors.lastName ? 'error' : ''}`}
+                            placeholder={t.payment.placeholders.lastName}
+                            name="lastName" 
+                            value={formData.lastName} 
+                            onChange={handleInputChange}
+                            onBlur={handleBlur}
+                        />
+                        {errors.lastName && <span className="error-message">{errors.lastName}</span>}
                     </div>
                     <div className="payment-container-item">
-                        <label className="payment-form-label">Country</label>
-                        <input type="text" className="payment-form-input" placeholder="USA" name="country" value={formData.country} onChange={handleInputChange} />
+                        <label className="payment-form-label">{t.payment.labels.country}</label>
+                        <input 
+                            type="text" 
+                            className={`payment-form-input ${errors.country ? 'error' : ''}`}
+                            placeholder={t.payment.placeholders.country}
+                            name="country" 
+                            value={formData.country} 
+                            onChange={handleInputChange}
+                            onBlur={handleBlur}
+                        />
+                        {errors.country && <span className="error-message">{errors.country}</span>}
                     </div>
                     <div className="payment-container-item">
-                        <label className="payment-form-label">City</label>
-                        <input type="text" className="payment-form-input" placeholder="New York" name="city" value={formData.city} onChange={handleInputChange} />
+                        <label className="payment-form-label">{t.payment.labels.city}</label>
+                        <input 
+                            type="text" 
+                            className={`payment-form-input ${errors.city ? 'error' : ''}`}
+                            placeholder={t.payment.placeholders.city}
+                            name="city" 
+                            value={formData.city} 
+                            onChange={handleInputChange}
+                            onBlur={handleBlur}
+                        />
+                        {errors.city && <span className="error-message">{errors.city}</span>}
                     </div>
                     <div className="payment-container-item">
-                        <label className="payment-form-label">Address</label>
-                        <input type="text" className="payment-form-input" placeholder="Address" name="address" value={formData.address} onChange={handleInputChange} />
+                        <label className="payment-form-label">{t.payment.labels.address}</label>
+                        <input 
+                            type="text" 
+                            className={`payment-form-input ${errors.address ? 'error' : ''}`}
+                            placeholder={t.payment.placeholders.address}
+                            name="address" 
+                            value={formData.address} 
+                            onChange={handleInputChange}
+                            onBlur={handleBlur}
+                        />
+                        {errors.address && <span className="error-message">{errors.address}</span>}
                     </div>
                     <div className="payment-container-item">
-                        <label className="payment-form-label">E-mail</label>
-                        <input type="email" className="payment-form-input" placeholder="your@email.com" name="email" value={formData.email} onChange={handleInputChange} />
+                        <label className="payment-form-label">{t.payment.labels.email}</label>
+                        <input 
+                            type="email" 
+                            className={`payment-form-input ${errors.email ? 'error' : ''}`}
+                            placeholder={t.payment.placeholders.email}
+                            name="email" 
+                            value={formData.email} 
+                            onChange={handleInputChange}
+                            onBlur={handleBlur}
+                        />
+                        {errors.email && <span className="error-message">{errors.email}</span>}
                     </div>
                     <div className="payment-container-item">
-                        <label className="payment-form-label">Phone Number</label>
-                        <input type="tel" className="payment-form-input" placeholder="+_-___-___-____" name="phone" value={formData.phone} onChange={handleInputChange} />
+                        <label className="payment-form-label">{t.payment.labels.phone}</label>
+                        <input 
+                            type="tel" 
+                            className={`payment-form-input ${errors.phone ? 'error' : ''}`}
+                            placeholder={t.payment.placeholders.phone}
+                            name="phone" 
+                            value={formData.phone} 
+                            onChange={handleInputChange}
+                            onBlur={handleBlur}
+                        />
+                        {errors.phone && <span className="error-message">{errors.phone}</span>}
                     </div>
                     <div className="payment-container-item">
-                        <h2 style={{ textAlign: "center" }}>Course Price</h2>
-                        <h3 style={{ textAlign: "center" }}>${formData.price}</h3>
+                        <h2 style={{ textAlign: "center" }}>{t.payment.labels.coursePrice}</h2>
+                        <h3 style={{ textAlign: "center" }}>{formData.price} MDL</h3>
                     </div>
                     <div className="payment-container-item">
                         <div className="checkbox">
@@ -142,7 +321,7 @@ const Payment = (props) => {
                                 onChange={handleCheckboxChange}
                             />
                             <label htmlFor="termsandconditions" style={{ paddingLeft: '5px' }}>
-                                I accept the <a href="#/terms-and-conditions" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline" }}>Terms and Conditions</a> and <a href="#/privacy-policy" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline" }}>Privacy Policy</a>
+                                {t.payment.labels.termsAndConditions}
                             </label>
                         </div>
                     </div>
@@ -152,7 +331,7 @@ const Payment = (props) => {
                             onClick={handlePayment}
                             disabled={!isChecked}
                         >
-                            <span className="thq-body-small">Buy</span>
+                            <span className="thq-body-small">{t.payment.labels.buy}</span>
                         </button>
                     </div>
                 </div>

@@ -24,16 +24,16 @@ export const translations = {
       softwareTestingCypressPro: "Testare automatizată (Cypress)",
       pageTitle: "Cursuri de Testare Software",
       pageDescription: "1",
-      autoJavaTestingCourse_1: "Testare automatizată (Java)",
-      autoJavaTestingCourse_2: "Testare automatizată (Java)",
-      autoJavaTestingCourse_3: "Testare automatizată (Java)",
-      autoJavaTestingCourse_4: "Testare automatizată (Java)",
-      autoJavaTestingCourse_5: "Testare automatizată (Java)",
-      autoCypressTestingCourse_1: "Testare automatizată (Cypress)",
-      autoCypressTestingCourse_2: "Testare automatizată (Cypress)",
-      autoCypressTestingCourse_3: "Testare automatizată (Cypress)",
-      autoCypressTestingCourse_4: "Testare automatizată (Cypress)",
-      autoCypressTestingCourse_5: "Testare automatizată (Cypress)",
+      autoJavaTestingCourse_1: "Studiu aprofundat al limbajului Java",
+      autoJavaTestingCourse_2: "Selenium, Cucumber, TestNG, Maven, Jenkins, Git, GitHub",
+      autoJavaTestingCourse_3: "SQL si Baze de date",
+      autoJavaTestingCourse_4: "Testare API, Postman, Rest Assured",
+      autoJavaTestingCourse_5: "Dezvoltare Framework pentru testare automatizată",
+      autoCypressTestingCourse_1: "Studiu aprofundat al limbajului JavaScript si Typescript",
+      autoCypressTestingCourse_2: "Cypress, Git, Github, Jenkins",
+      autoCypressTestingCourse_3: "Testare API, Postman",
+      autoCypressTestingCourse_4: "SQL si Baze de date",
+      autoCypressTestingCourse_5: "Studiu aprofundat al testării manuale",
       manualTestingCourse_1: "Aspecte teoretice ale testării software",
       manualTestingCourse_2: "Aplicarea practică a tehnicilor de testare",
       manualTestingCourse_3: "API Testing",
@@ -125,7 +125,7 @@ export const translations = {
       feature2Title: "Practică",
       feature2Description: "Veți face 80% practică, care conține sarcini similare cu cele ce le veți avea la un proiect comercial.",
       feature3Title: "Lecții individuale",
-      feature3Description: "Lecțiile individuale permit ca sa aveți un program de studiu flexibil care poate fi combinat cu alte activități. Le fel abordarea individuală a fiecarui student îi va ajuta sa învețe intr-un termen scurt.",
+      feature3Description: "Lecțiile individuale permit ca sa aveți un program de studiu flexibil care poate fi combinat cu alte activități. La fel abordarea individuală a fiecarui student îi va ajuta sa învețe intr-un termen scurt.",
       feature4Title: "Certificare Recunoscută",
       feature4Description: "Obține un certificat recunoscut în industrie"
     },
@@ -185,6 +185,61 @@ export const translations = {
       twitter: "X",
       linkedin: "LinkedIn",
       youtube: "YouTube"
+    },
+    payment: {
+      loadingText: "Asteptati, curind veti fi directionati pe pagina platii",
+      labels: {
+        personalDetails: "Detalii Personale",
+        firstName: "Nume",
+        lastName: "Prenume",
+        country: "Țară",
+        city: "Oraș",
+        address: "Adresă",
+        email: "Email",
+        phone: "Telefon",
+        coursePrice: "Preț Curs",
+        termsAndConditions: "Accept Termenii și Condițiile și Politica de Confidențialitate",
+        buy: "Cumpără"
+      },
+      placeholders: {
+        firstName: "Ion",
+        lastName: "Popescu",
+        country: "Moldova",
+        city: "Chișinău",
+        address: "Strada Exemplu, Nr. 123",
+        email: "exemplu@email.com",
+        phone: "+373 69 123 456"
+      },
+      validation: {
+        firstName: {
+          required: "Numele este obligatoriu",
+          minLength: "Numele trebuie să aibă minim 2 caractere"
+        },
+        lastName: {
+          required: "Prenumele este obligatoriu",
+          minLength: "Prenumele trebuie să aibă minim 2 caractere"
+        },
+        email: {
+          required: "Email-ul este obligatoriu",
+          format: "Vă rugăm să introduceți un email valid"
+        },
+        country: {
+          required: "Țara este obligatorie",
+          minLength: "Numele țării trebuie să aibă minim 2 caractere"
+        },
+        city: {
+          required: "Orașul este obligatoriu",
+          minLength: "Numele orașului trebuie să aibă minim 2 caractere"
+        },
+        address: {
+          required: "Adresa este obligatorie",
+          minLength: "Adresa trebuie să aibă minim 5 caractere"
+        },
+        phone: {
+          required: "Numărul de telefon este obligatoriu",
+          format: "Vă rugăm să introduceți un număr de telefon valid"
+        }
+      }
     }
   },
   RU: {
@@ -210,16 +265,16 @@ export const translations = {
       softwareTestingCypress: "Автоматизированное Тестирование (Cypress)",
       softwareTestingCypressPro: "Автоматизированное Тестирование (Cypress)",
       pageTitle: "Курсы Тестирования ПО",
-      autoJavaTestingCourse_1: "Testare automatizată (Java)",
-      autoJavaTestingCourse_2: "Testare automatizată (Java)",
-      autoJavaTestingCourse_3: "Testare automatizată (Java)",
-      autoJavaTestingCourse_4: "Testare automatizată (Java)",
-      autoJavaTestingCourse_5: "Testare automatizată (Java)",
-      autoCypressTestingCourse_1: "Testare automatizată (Cypress)",
-      autoCypressTestingCourse_2: "Testare automatizată (Cypress)",
-      autoCypressTestingCourse_3: "Testare automatizată (Cypress)",
-      autoCypressTestingCourse_4: "Testare automatizată (Cypress)",
-      autoCypressTestingCourse_5: "Testare automatizată (Cypress)",
+      autoJavaTestingCourse_1: "Углубленное изучение языка Java",
+      autoJavaTestingCourse_2: "Selenium, Cucumber, TestNG, Maven, Jenkins, Git, GitHub",
+      autoJavaTestingCourse_3: "SQL и Базы данных",
+      autoJavaTestingCourse_4: "Тестирование API, Postman, Rest Assured",
+      autoJavaTestingCourse_5: "Разработка Framework для автоматизированного тестирования",
+      autoCypressTestingCourse_1: "Углубленное изучение JavaScript и TypeScript",
+      autoCypressTestingCourse_2: "Cypress, Git, GitHub, Jenkins",
+      autoCypressTestingCourse_3: "Тестирование API, Postman",
+      autoCypressTestingCourse_4: "SQL и Базы данных",
+      autoCypressTestingCourse_5: "Углубленное изучение ручного тестирования",
       manualTestingCourse_1: "Теоретические аспекты тестирования ПО",
       manualTestingCourse_2: "Практическое применение методов тестирования",
       manualTestingCourse_3: "API Testing",
@@ -372,6 +427,61 @@ export const translations = {
       twitter: "X",
       linkedin: "LinkedIn",
       youtube: "YouTube"
+    },
+    payment: {
+      loadingText: "Пожалуйста, подождите, скоро вы будете перенаправлены на страницу оплаты",
+      labels: {
+        personalDetails: "Личные данные",
+        firstName: "Имя",
+        lastName: "Фамилия",
+        country: "Страна",
+        city: "Город",
+        address: "Адрес",
+        email: "Email",
+        phone: "Телефон",
+        coursePrice: "Цена курса",
+        termsAndConditions: "Принимаю Условия и Положения и Политику конфиденциальности",
+        buy: "Купить"
+      },
+      placeholders: {
+        firstName: "Иван",
+        lastName: "Петров",
+        country: "Молдова",
+        city: "Кишинев",
+        address: "Улица Пример, 123",
+        email: "primer@email.com",
+        phone: "+373 69 123 456"
+      },
+      validation: {
+        firstName: {
+          required: "Имя обязательно",
+          minLength: "Имя должно содержать минимум 2 символа"
+        },
+        lastName: {
+          required: "Фамилия обязательна",
+          minLength: "Фамилия должна содержать минимум 2 символа"
+        },
+        email: {
+          required: "Email обязателен",
+          format: "Пожалуйста, введите корректный email"
+        },
+        country: {
+          required: "Страна обязательна",
+          minLength: "Название страны должно содержать минимум 2 символа"
+        },
+        city: {
+          required: "Город обязателен",
+          minLength: "Название города должно содержать минимум 2 символа"
+        },
+        address: {
+          required: "Адрес обязателен",
+          minLength: "Адрес должен содержать минимум 5 символов"
+        },
+        phone: {
+          required: "Телефон обязателен",
+          format: "Пожалуйста, введите корректный номер телефона"
+        }
+      }
     }
   }
 }; 
